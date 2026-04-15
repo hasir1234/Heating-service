@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package heatingprediction;
+
+message HeatingFeatures {
+  float Hubids = 1;
+  string Eircode = 2;
+  float Month = 3;
+  float TwoHrSlot = 4;
+  float gas_pct = 5;
+}
+
+message HeatingPrediction {
+  float predicted_heat_mean = 1;
+  string alert = 2;
+  string tariff = 3;
+}
+
+service HeatingPredict {
+  rpc predict_heating(HeatingFeatures) returns (HeatingPrediction);
+}
